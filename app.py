@@ -18,181 +18,75 @@ def home():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Predictify - Churn Prediction</title>
-    <style>
-        /* Global styles */
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: #1a1a1a;
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links li a:hover {
-            color: #ff4081;
-        }
-
-        .cta-button {
-            background-color: #ff4081;
-            color: #fff;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .cta-button:hover {
-            background-color: #e0356d;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem;
-            background: linear-gradient(90deg, #ff4081, #ff80ab);
-            color: #fff;
-        }
-
-        .hero-text h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-text p {
-            font-size: 1.25rem;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        /* Form Section */
-        .form-section {
-            padding: 2rem;
-            text-align: center;
-            background-color: #fff;
-            margin: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-section h2 {
-            margin-bottom: 1rem;
-        }
-
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .form-container input {
-            width: 90%;
-            max-width: 400px;
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #1a1a1a;
-            color: #fff;
-            margin-top: 2rem;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header class="navbar">
-        <div class="logo">Predictify</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <button class="cta-button">Get Started</button>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div class="text-2xl font-bold">Predictify</div>
+            <nav>
+                <ul class="flex space-x-6 text-lg">
+                    <li><a href="#" class="hover:text-gray-200">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-200">About</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Features</a></li>
+                    <li><a href="#" class="hover:text-gray-200">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="bg-white text-pink-500 px-4 py-2 rounded-full shadow-md hover:bg-pink-100">
+                Get Started
+            </button>
+        </div>
     </header>
 
-    <main>
-        <section class="hero-section">
-            <div class="hero-text">
-                <h1>Welcome to Predictify</h1>
-                <p>Empowering businesses to predict customer churn with ease.</p>
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-to-r from-purple-400 to-blue-500 text-white py-20">
+        <div class="container mx-auto flex flex-col lg:flex-row items-center px-6 space-y-6 lg:space-y-0 lg:space-x-12">
+            <div class="hero-text text-center lg:text-left max-w-lg">
+                <h1 class="text-4xl font-bold mb-4">Welcome to Predictify</h1>
+                <p class="text-lg">Empowering businesses to predict customer churn with ease.</p>
+                <div class="hero-image">
+                    <img src="predtify_icon.png" alt="">
+                </div>
             </div>
-            <div class="hero-image">
-                <img src="hero-image.png" alt="Data Analysis">
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="form-section">
-            <h2>Predict Customer Churn</h2>
-            <form method="POST" action="/predict" class="form-container">
-                <input type="number" name="credit_score" placeholder="Credit Score" required>
-                <input type="text" name="gender" placeholder="Gender (1 for Male/ 0for Female)" required>
-                <input type="number" name="age" placeholder="Age" required>
-                <input type="number" name="tenure" placeholder="Tenure" required>
-                <input type="number" name="balance" placeholder="Balance" required>
-                <input type="number" name="products_number" placeholder="Number of Products" required>
-                <input type="number" name="credit_card" placeholder="Has Credit Card (1 for yes/0 for no)" required>
-                <input type="number" name="active_member" placeholder="Active Member (1 for yes/0 for no)" required>
-                <input type="number" name="estimated_salary" placeholder="Estimated Salary" required>
-                <input type="number" name="country_Germany" placeholder="are you German? (1 for yes/0 for no)" required>
-                <input type="number" name="country_Spain" placeholder="are you spanish? (1 for yes/0 for no)" required>
-                <input type="text" name="high_risk_age" placeholder="are you above age 40?(1 for yes/0 for no)" required>
-                <input type="text" name="high_balance_risk" placeholder="Is your balance below 50000?(1 for yes/0 for no)" required>
-                <input type="text" name="high_credit_score" placeholder="Is your credit score below 650?(1 for yes/ 0 for no)" required>
-                <button type="submit" class="cta-button">Predict</button>
+    <!-- Form Section -->
+    <section class="form-section bg-white py-12">
+        <div class="container mx-auto text-center px-6">
+            <h2 class="text-3xl font-bold mb-6">Predict Customer Churn</h2>
+            <form method="POST" action="/predict" class="form-container flex flex-col items-center gap-4 max-w-lg mx-auto">
+                <input type="number" name="credit_score" placeholder="Credit Score" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="text" name="gender" placeholder="Gender (1 for Male/ 0 for Female)" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="number" name="age" placeholder="Age" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="number" name="tenure" placeholder="Tenure" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="number" name="balance" placeholder="Balance" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="number" name="products_number" placeholder="Number of Products" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="number" name="credit_card" placeholder="Has Credit Card (1 for yes/0 for no)" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="number" name="active_member" placeholder="Active Member (1 for yes/0 for no)" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="number" name="estimated_salary" placeholder="Estimated Salary" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="number" name="country_Germany" placeholder="Are you German? (1 for yes/0 for no)" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="number" name="country_Spain" placeholder="Are you Spanish? (1 for yes/0 for no)" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="text" name="high_risk_age" placeholder="Are you above age 40? (1 for yes/0 for no)" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="text" name="high_balance_risk" placeholder="Is your balance below 50,000? (1 for yes/0 for no)" required class="w-full p-3 border border-gray-300 rounded-md">
+                <input type="text" name="high_credit_score" placeholder="Is your credit score below 650? (1 for yes/0 for no)" required class="w-full p-3 border border-gray-300 rounded-md">
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-md hover:shadow-lg hover:scale-105 transition">
+                    Predict
+                </button>
             </form>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
-        <p>© 2025 Predictify. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">© 2025 Predictify. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
+
 '''
 
 @app.route('/predict', methods=['POST'])
